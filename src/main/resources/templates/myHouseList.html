@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <Title>Your House</Title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <style>
+
+            .clsImg {
+                min-height: 250px !important;
+                max-height: 250px !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                object-fit: cover;
+            }
+
+        </style>
+    </head>
+    <body>
+        <!--header-->
+        <div class="headerpage"></div>
+        <!--header over-->
+
+        <!--body-->
+
+        <div class="container-fluid" style="background-color: #F8F8F8;">
+
+            <div class="container p-1">
+                <h3 class="mb-5">My House List</h3>
+
+
+                <div class="row px-3 my-4" id="myHouseBody">
+<!--                    card-->
+                                        <div class="p-3 col-12 rounded" style="background-color: white">
+                                            <h6>Currently do not have any uploaded house</h6>
+
+                                            <a href="uploadHouse.html" class="mt-5 btn btn-primary">Upload House</a>
+                                        </div>
+
+                                        <div class="card mb-4" style="width:100%;">
+                                            <div class="row no-gutters">
+                                                <div class="col-sm-5">
+                                                    <img class="card-img clsImg"
+                                                         src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg"
+                                                         >
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Building Name</h5>
+                                                        <p class="card-text">Rental:</p>
+                                                        <p class="card-text">Status:</p>
+                                                        <a href="#" class="btn btn-primary">Check House</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--card-->
+                                        <div class="card mb-4" style="width:100%;">
+                                            <div class="row no-gutters">
+                                                <div class="col-sm-5">
+                                                    <img class="card-img clsImg"
+                                                         src="https://media.istockphoto.com/photos/mobile-phone-top-view-with-white-screen-picture-id1161116588"
+                                                         >
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Building Name</h5>
+                                                        <p class="card-text">Rental:</p>
+                                                        <p class="card-text">Status:</p>
+                                                        <a href="#" class="btn btn-primary">Check House</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--body end-->
+        <!--footer-->
+        <div class="footerpage"></div>
+        <!--footer over-->
+
+        <!--            script-->
+        <script>
+            $(function () {
+                $(".headerpage").load("header.html");
+                $(".footerpage").load("footer.html");
+            });
+
+            $.get("findAllUserHouse", {}, function (data) {
+                console.log(data);
+                var allHouse = "";
+                if (data.length > 0) {
+
+                    for (var i = 0; i < data.length; i++) {
+                        // var imgUrl = data[i].imageUrl;
+                        // if (imgUrl === null) {
+                        //     imgUrl = "image/no.jpg";
+                        // } else {
+                        //     if (imgUrl.indexOf(',') != -1) {
+                        //         strs = imgUrl.split(',');
+                        //         imgUrl = strs[0];
+                        //     }
+                        // }
+                        var imgUrl = data[i].mainImageUrl;
+                        console.log(imgUrl);
+                        if (imgUrl === "no"){
+                            imgUrl = "image/no.jpg";
+                        }
+                        var houseCard = "<div class=\"card mb-4\" style=\"width:100%;\">\n" +
+                            "                        <div class=\"row no-gutters\">\n" +
+                            "                            <div class=\"col-sm-5\">\n" +
+                            "                                <img class=\"card-img clsImg\"\n" +
+                            "                                     src=\"" + imgUrl + "\"\n" +
+                            "                                     >\n" +
+                            "                            </div>\n" +
+                            "                            <div class=\"col-sm-7\">\n" +
+                            "                                <div class=\"card-body\">\n" +
+                            "                                    <h5 class=\"card-title\">" + data[i].buildingName + "</h5>\n" +
+                            "                                    <p class=\"card-text\">Rental: RM" + data[i].rental + "</p>\n" +
+                            "                                    <p class=\"card-text\">Status: " + data[i].status + "</p>\n"
+                        if (data[i].status === "ready"){
+                            houseCard+=                            "                                    <a href=\"/viewMyHouse?id=" + data[i].id + "\" class=\"btn mt-3 btn-primary\">Edit House</a>\n" +
+                                "                                    <a href=\"/stopRentHouse?id=" + data[i].id + "\" class=\"btn mt-3 btn-danger\">Stop Renting</a>\n" +
+                                "                                </div>\n" +
+                                "                            </div>\n" +
+                                "                        </div>\n" +
+                                "                    </div>"
+                        } else if (data[i].status === "stop"){
+                            houseCard+=                            "                                    <a href=\"/viewMyHouse?id=" + data[i].id + "\" class=\"btn mt-3 btn-primary\">Edit House</a>\n" +
+                                "                                    <a href=\"/continueRentHouse?id=" + data[i].id + "\" class=\"btn mt-3 btn-success\">Continue Renting</a>\n" +
+                                "                                </div>\n" +
+                                "                            </div>\n" +
+                                "                        </div>\n" +
+                                "                    </div>"
+                        } else {
+                            houseCard+=                            "                                    <a href=\"/viewMyHouse?id=" + data[i].id + "\" class=\"btn btn-primary\">Edit House</a>\n" +
+                                "                                </div>\n" +
+                                "                            </div>\n" +
+                                "                        </div>\n" +
+                                "                    </div>"
+                        }
+
+
+                        allHouse += houseCard;
+                    }
+                } else {
+                    allHouse = "                    <div class=\"p-3 col-12 rounded\" style=\"background-color: white\">\n" +
+                        "                        <h6>Currently do not have any uploaded house</h6>\n" +
+                        "\n" +
+                        "                        <a href=\"uploadHouse.html\" class=\"mt-5 btn btn-primary\">Upload House</a>\n" +
+                        "                    </div>\n"
+                }
+
+                $("#myHouseBody").html(allHouse);
+
+            })
+        </script>
+    </body>
+</html>

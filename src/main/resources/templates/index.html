@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Index</title>
+        <script src="./js/jquery-3.6.0.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/index.css">
+        <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'>
+        <script>
+            // for logout
+            $(function () {
+                $("#logoutBtn").click(function () {
+                    $.get("logoutServlet", {}, function (data) {
+                        if (data.flag) {
+                            location.href = "login.html";
+                        }
+                    });
+                })
+            })
+
+        </script>
+        <style>
+
+            .clsImg {
+                max-width: 100%;
+                height: 265px !important;
+                width: 380px !important;
+                object-fit: cover;
+            }
+        </style>
+    </head>
+    <body class="">
+        <!--header-->
+        <div class="headerpage"></div>
+        <!--header over-->
+
+        <!--body-->
+        <div class="container-fluid" style="background-color: #F8F8F8;">
+
+            <!--<form>-->
+            <div class="container p-1">
+                <!--search bar-->
+                <div class="row p-3">
+                    <!--                    <nav class="navbar navbar-light mx-auto">-->
+                    <!--                        <div class="form-inline">-->
+                    <!--                            <input class="form-control mr-sm-3" type="search" name="keyword" placeholder="Search" aria-label="Search">-->
+                    <!--                            <label class="mr-sm-1">Price Range</label>-->
+
+                    <!--                            <input type="number" class="form-control col-12 col-sm-3" name="mixPrice" min="0" max="12000000" placeholder="Min Price">-->
+                    <!--                            <label>-&#45;&#45;</label>-->
+
+                    <!--                            <input type="number" class="form-control mr-sm-3" name="maxPrice" min="1" max="12000000"-->
+                    <!--                                   placeholder="Max Price">-->
+
+                    <!--                            <div class="form-group mr-sm-3">-->
+                    <!--                                <label for="exampleFormControlSelect1" class="mr-sm-1">State</label>-->
+                    <!--                                <select class="form-control" id="exampleFormControlSelect1">-->
+                    <!--                                    <option value="Johor">Johor</option>-->
+                    <!--                                    <option value="Kedah">Kedah</option>-->
+                    <!--                                    <option value="Kelantan">Kelantan</option>-->
+                    <!--                                    <option value="Malacca">Malacca</option>-->
+                    <!--                                    <option value="Negeri Sembilan">Negeri Sembilan</option>-->
+                    <!--                                    <option value="Pahang">Pahang</option>-->
+                    <!--                                    <option value="Penang">Penang</option>-->
+                    <!--                                    <option value="Perak">Perak</option>-->
+                    <!--                                    <option value="Perlis">Perlis</option>-->
+                    <!--                                    <option value="Sabah">Sabah</option>-->
+                    <!--                                    <option value="Sarawak">Sarawak</option>-->
+                    <!--                                    <option value="Selangor">Selangor</option>-->
+                    <!--                                    <option value="Terengganu">Terengganu</option>-->
+                    <!--                                </select>-->
+                    <!--                            </div>-->
+
+                    <!--&lt;!&ndash;                            <div class="form-group mr-sm-3">&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                <label for="exampleFormControlSelect1" class="mr-sm-2">Area</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                <select class="form-control" id="exampleFormControlSelect2">&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Johor">Johor</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Kedah">Kedah</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Kelantan">Kelantan</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Malacca">Malacca</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Negeri Sembilan">Negeri Sembilan</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Pahang">Pahang</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Penang">Penang</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Perak">Perak</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Perlis">Perlis</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Sabah">Sabah</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Sarawak">Sarawak</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Selangor">Selangor</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                    <option value="Terengganu">Terengganu</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                </select>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+                    <!--                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->
+                    <!--                                Launch demo modal sss-->
+                    <!--                            </button>-->
+                    <!--                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+                    <!--                                <div class="modal-dialog" role="document">-->
+                    <!--                                    <div class="modal-content">-->
+                    <!--                                        <div class="modal-header">-->
+                    <!--                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+                    <!--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                    <!--                                                <span aria-hidden="true">&times;</span>-->
+                    <!--                                            </button>-->
+                    <!--                                        </div>-->
+                    <!--                                        <div class="modal-body">-->
+                    <!--                                            ...-->
+                    <!--                                        </div>-->
+                    <!--                                        <div class="modal-footer">-->
+                    <!--                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                    <!--                                            <button type="button" class="btn btn-primary">Save changes</button>-->
+                    <!--                                        </div>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+                    <!--&lt;!&ndash;                        </form>&ndash;&gt;-->
+                    <!--                        </div>-->
+                    <!--                    </nav>-->
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                            data-target="#exampleModal">
+                        Search
+                    </button>
+
+                    <button type="button" id="clearBtn" class="btn btn-outline-danger ml-3">
+                        Clear
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Search</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form id="searchForm">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>BuildingName</label>
+                                            <input type="text" class="form-control" id="Keyword"
+                                                   aria-describedby="emailHelp" name="keyword"
+                                                   placeholder="Building Name or Keyword">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>State</label>
+                                            <select class="custom-select" name="state" id="state">
+                                                <option value="State">All</option>
+                                                <option value="Johor">Johor</option>
+                                                <option value="Kedah">Kedah</option>
+                                                <option value="Kelantan">Kelantan</option>
+                                                <option value="Malacca">Malacca</option>
+                                                <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                                <option value="Pahang">Pahang</option>
+                                                <option value="Penang">Penang</option>
+                                                <option value="Perak">Perak</option>
+                                                <option value="Perlis">Perlis</option>
+                                                <option value="Sabah">Sabah</option>
+                                                <option value="Sarawak">Sarawak</option>
+                                                <option value="Selangor">Selangor</option>
+                                                <option value="Terengganu">Terengganu</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-3">
+                                                <label>Min Rental</label>
+                                                <input type="number" min="1" max="999999" name="minRental"
+                                                       class="form-control" id="minRental"
+                                                       placeholder="Min Rental">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>Max Rental</label>
+                                                <input type="number" min="1" max="999999" name="maxRental"
+                                                       class="form-control" id="maxRental"
+                                                       placeholder="Max Rental">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>Furnish</label>
+                                                <select class="custom-select mr-sm-2" name="furnish" id="furnish">
+                                                    <option value="Furnish">All</option>
+                                                    <option value="No Furnishing">No Furnishing</option>
+                                                    <option value="Partial Furnishing">Partial Furnishing</option>
+                                                    <option value="Fully Furnishing">Fully Furnishing</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-3">
+                                                <label>Bedroom (Amount)</label>
+                                                <input type="number" min="0" max="99" name="bedroom"
+                                                       class="form-control" id="bedroom"
+                                                       placeholder="Bedroom">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>Bathroom (Amount)</label>
+                                                <input type="number" min="0" max="99" name="bathroom"
+                                                       class="form-control" id="bathroom"
+                                                       placeholder="Bathroom">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Search</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                id="closeModalBtn">Close
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--search bar end-->
+
+                <!--house content-->
+                <div class="row" id="houseBody">
+                    <div>
+                        No record
+                    </div>
+
+                    <!--card-->
+                    <div class="col-12 col-sm-12 col-md-4 p-3">
+                        <div class="card card-shadow h-100">
+                            <img class="card-img-top card-picture clsImg"
+                                 src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">Parkhill Residence, Bukit Jalil Bukit Jalil</h5>
+                                <h6 class="font-weight-normal">RM1200 (Whole Unit)</h6>
+
+
+                                <div class="row mt-3">
+                                    <div class="col-6 mt-3">
+                                        <img height="25" src="https://img.icons8.com/ios/50/000000/skyscrapers.png"/>
+                                        <text>High Rise</text>
+                                    </div>
+                                    <div class="col-6 mt-3">
+                                        <img height="25" src="https://img.icons8.com/ios/48/000000/bed.png"/>
+                                        <text>1 Bed</text>
+                                    </div>
+                                    <div class="col-6 mt-3">
+                                        <img height="25" src="https://img.icons8.com/ios/50/000000/prefab-house.png"/>
+                                        <text>270 sqft</text>
+                                    </div>
+                                    <div class="col-6 mt-3">
+                                        <img height="25" src="https://img.icons8.com/ios/50/000000/toilet-room.png"/>
+                                        <text>3 Bathroom</text>
+                                    </div>
+                                    <div class="col-6 mt-3">
+                                        <img height="25" src="https://img.icons8.com/ios/50/000000/furniture.png"/>
+                                        <text>Fully Furnished</text>
+                                    </div>
+                                    <div class="col-6 mt-3">
+                                        <img height="25" src="https://img.icons8.com/ios/50/000000/car--v1.png"/>
+                                        <text>1 Carpark</text>
+                                    </div>
+                                </div>
+                                <a href="/viewDetails?id=xxx" class="btn btn-outline-primary mt-4">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--card end-->
+
+
+                </div>
+                <!--house content end-->
+                <!--                <nav aria-label="Page navigation example" class="table-responsive mb-2">-->
+                <!--                    <ul id="pageAmount" class="pagination mb-0">-->
+                <!--                        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">4</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">5</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">6</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">7</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">8</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">9</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">10</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">11</a></li>-->
+                <!--                        <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+                <!--                    </ul>-->
+                <!--                </nav>-->
+
+            </div>
+            <!--            </form>-->
+        </div>
+        <!--        body end-->
+        <!--footer-->
+        <div class="footerpage"></div>
+        <!--footer over-->
+
+        <!--        script-->
+        <script>
+            $(function () {
+                $(".headerpage").load("header.html");
+                $(".footerpage").load("footer.html");
+            });
+
+            $("#clearBtn").click(function () {
+                location.reload()
+            });
+
+
+            $.get("findAllHouse", {}, function (data) {
+                var allHouse = "";
+                console.log(data);
+                if (data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        var imgUrl = data[i].mainImageUrl;
+                        console.log(imgUrl);
+                        if (imgUrl === "no") {
+                            imgUrl = "image/no.jpg";
+                        }
+                        console.log("imgUrl=" + imgUrl);
+                        var houseCard = "<div class=\"col-12 col-sm-12 col-md-4 col-6 p-1\">\n" +
+                            "                        <div class=\"card card-shadow h-100\">\n" +
+                            "                            <img class=\"card-img-top clsImg card-picture\"\n" +
+                            "                                 src=\"" + imgUrl + "\"\n" +
+                            "                                 alt=\"Card image cap\">\n" +
+                            "                            <div class=\"card-body\">\n" +
+                            "                                <h5 class=\"card-title font-weight-bold\">" + data[i].buildingName + "</h5>\n" +
+                            "                                <h6 class=\"font-weight-normal\">RM" + data[i].rental + "</h6>\n" +
+                            "\n" +
+                            "\n" +
+                            "                                <div class=\"row mt-3\">\n" +
+                            "                                    <div class=\"col-6 mt-3\">\n" +
+                            "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/skyscrapers.png\"/> <text>" + data[i].type + "</text>\n" +
+                            "                                    </div>\n" +
+                            "                                    <div class=\"col-6 mt-3\">\n" +
+                            "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/48/000000/bed.png\"/> <text>" + data[i].bedroom + " Bedroom</text>\n" +
+                            "                                    </div>\n" +
+                            "                                    <div class=\"col-6 mt-3\">\n" +
+                            "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/prefab-house.png\"/> <text>" + data[i].squareFt + " sqft</text>\n" +
+                            "                                    </div>\n" +
+                            "                                    <div class=\"col-6 mt-3\">\n" +
+                            "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/toilet-room.png\"/> <text>" + data[i].bathroom + " Bathroom</text>\n" +
+                            "                                    </div>\n" +
+                            "                                    <div class=\"col-6 mt-3\">\n" +
+                            "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/furniture.png\"/> <text>" + data[i].furnish + "</text>\n" +
+                            "                                    </div>\n" +
+                            "                                    <div class=\"col-6 mt-3\">\n" +
+                            "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/car--v1.png\"/> <text>" + data[i].carPark + " Carpark</text>\n" +
+                            "                                    </div>\n" +
+                            "                                </div>\n" +
+                            "                                <a href=\"/viewDetails?id=" + data[i].id + "\" class=\"btn btn-outline-primary mt-4\">View Details</a>\n" +
+                            "                            </div>\n" +
+                            "                        </div>\n" +
+                            "                    </div>"
+                        allHouse += houseCard;
+                    }
+                } else {
+                    allHouse += "                    <div>\n" +
+                        "                        No record\n" +
+                        "                    </div>"
+                }
+
+
+                $("#houseBody").html(allHouse);
+
+            })
+        </script>
+
+        <script>
+            $(function () {
+                $("#searchForm").submit(function (e) {
+                    e.preventDefault();
+                    var obj = $(this).serialize()
+                    $.post("/searchHouse", $(this).serialize(), function (data) {
+                        //data=response flag:true:register success, false: register fail
+                        if (data.length > 0) {
+                            var allHouse = "";
+                            for (var i = 0; i < data.length; i++) {
+                                var imgUrl = data[i].mainImageUrl;
+                                console.log(imgUrl);
+                                if (imgUrl === "no") {
+                                    imgUrl = "image/no.jpg";
+                                }
+                                console.log("imgUrl=" + imgUrl);
+                                var houseCard = "<div class=\"col-12 col-sm-12 col-md-4 col-6 p-1\">\n" +
+                                    "                        <div class=\"card card-shadow h-100\">\n" +
+                                    "                            <img class=\"card-img-top clsImg card-picture\"\n" +
+                                    "                                 src=\"" + imgUrl + "\"\n" +
+                                    "                                 alt=\"Card image cap\">\n" +
+                                    "                            <div class=\"card-body\">\n" +
+                                    "                                <h5 class=\"card-title font-weight-bold\">" + data[i].buildingName + "</h5>\n" +
+                                    "                                <h6 class=\"font-weight-normal\">RM" + data[i].rental + "</h6>\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "                                <div class=\"row mt-3\">\n" +
+                                    "                                    <div class=\"col-6 mt-3\">\n" +
+                                    "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/skyscrapers.png\"/> <text>" + data[i].type + "</text>\n" +
+                                    "                                    </div>\n" +
+                                    "                                    <div class=\"col-6 mt-3\">\n" +
+                                    "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/48/000000/bed.png\"/> <text>" + data[i].bedroom + " Bedroom</text>\n" +
+                                    "                                    </div>\n" +
+                                    "                                    <div class=\"col-6 mt-3\">\n" +
+                                    "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/prefab-house.png\"/> <text>" + data[i].squareFt + " sqft</text>\n" +
+                                    "                                    </div>\n" +
+                                    "                                    <div class=\"col-6 mt-3\">\n" +
+                                    "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/toilet-room.png\"/> <text>" + data[i].bathroom + " Bathroom</text>\n" +
+                                    "                                    </div>\n" +
+                                    "                                    <div class=\"col-6 mt-3\">\n" +
+                                    "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/furniture.png\"/> <text>" + data[i].furnish + "</text>\n" +
+                                    "                                    </div>\n" +
+                                    "                                    <div class=\"col-6 mt-3\">\n" +
+                                    "                                        <img height=\"25\" src=\"https://img.icons8.com/ios/50/000000/car--v1.png\"/> <text>" + data[i].carPark + " Carpark</text>\n" +
+                                    "                                    </div>\n" +
+                                    "                                </div>\n" +
+                                    "                                <a href=\"/viewDetails?id=" + data[i].id + "\" class=\"btn btn-outline-primary mt-4\">View Details</a>\n" +
+                                    "                            </div>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>"
+                                allHouse += houseCard;
+                            }
+                        } else {
+
+                            allHouse = "                    <div>\n" +
+                                "                        No record\n" +
+                                "                    </div>"
+                        }
+
+
+                        $("#houseBody").html(allHouse);
+                        $("#closeModalBtn").trigger('click');
+                    })
+                })
+
+            });
+
+        </script>
+
+    </body>
+</html>

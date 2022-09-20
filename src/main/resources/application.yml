@@ -1,0 +1,50 @@
+#get datasource
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/house_rental?serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    view:
+      suffix: .html
+      prefix: /
+    static-path-pattern: /image/**
+  resource:
+    static-locations: classpath:/static/,classpath:/public/classpath:static/image/test
+  web:
+    resources:
+      static-locations: classpath:templates,classpath:static/,classpath:static/image,classpath:static/image/test
+      chain:
+        cache: false
+  thymeleaf: # Thymeleaf
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
+    resources: # Static resources
+      static-locations: file:src/main/resources/static/**
+      cache:
+        period: 0
+    suffix: .html
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.example.entity
+
+server:
+  servlet:
+    session:
+      cookie:
+        max-age: -1
+      timeout: -1
+  port: 8080
+
+#system :
+#  path :
+#    upload: D:/Drive/SynologyDrive/FYP-Code/House-Rental/src/main/resources/static/image

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <Title>My Order</Title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </head>
+    <style>
+
+        .clsImg {
+            min-height: 250px !important;
+            max-height: 250px !important;
+            min-width: 100% !important;
+            max-width: 100% !important;
+            object-fit: cover;
+        }
+
+
+    </style>
+    <body>
+
+        <!--header-->
+        <div class="headerpage"></div>
+        <!--header over-->
+        <!--for id purpose-->
+        <!--        <div id="houseID" style="display: none"></div>-->
+        <!--/*@thymesVar id="houseId" type=""*/-->
+        <span th:text="${houseId}" id="houseId" style="display: none"></span>
+        <!--        style="display: none"-->
+
+
+        <!--body-->
+        <div class="container">
+            <h6 class="section-title h1">My Order</h6>
+            <div class="row">
+                <div class="col-xs-12 col-12">
+                    <!--nav-->
+                    <nav class="">
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active col-6" id="nav-home-tab" data-toggle="tab"
+                               href="#nav-home"
+                               role="tab" aria-controls="nav-home" aria-selected="true">My House</a>
+                            <a class="nav-item nav-link col-6" id="nav-profile-tab" data-toggle="tab"
+                               href="#nav-profile"
+                               role="tab" aria-controls="nav-profile" aria-selected="false">My Rent</a>
+                        </div>
+                    </nav>
+                    <!--nav end-->
+
+                    <!--content start here-->
+                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                             aria-labelledby="nav-home-tab">
+                            <!--content-->
+                            <!--no appointment card-->
+                            <div class="p-3 col-12 rounded" style="background-color: white">
+                                <h6>Currently do not have any request</h6>
+
+                                <a href="index.html" class="mt-5 btn btn-primary">Check Houses</a>
+                            </div>
+                            <!--no appointment end-->
+                            <!--waiting card -->
+                            <div class="card mb-4" style="width:100%;">
+                                <div class="row no-gutters">
+                                    <div class="col-sm-5">
+                                        <img class="card-img clsImg"
+                                             src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg"
+                                        >
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="card-body row">
+                                            <div class="col-sm-12 col-md-9">
+                                                <h5 class="card-title">Building Name</h5>
+                                                <p class="card-text">Date and Time:</p>
+                                                <p class="card-text">Tenant Name:</p>
+                                                <p class="card-text">Tenant Phone:</p>
+                                                <p class="card-text">Status:</p>
+                                            </div>
+                                            <div class="col-md-3 mt-3 col-sm-12">
+                                                <a href="#" class="mt-1 btn btn-success">Accept</a>
+                                                <a href="#" class="mt-1 btn btn-danger">Decline</a>
+                                                <a href="#" class="mt-1 btn btn-primary">Check House</a>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" style="color: white" class="btn btn-warning mt-1"
+                                                        data-toggle="modal" data-target="#modal1">
+                                                    Agreement
+                                                </button>
+                                            </div>
+
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modal1" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Agreement</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <pre></pre>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--modal end-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--waiting card end -->
+                            <!--approve/cancel card -->
+                            <div class="card mb-4" style="width:100%;">
+                                <div class="row no-gutters">
+                                    <div class="col-sm-5">
+                                        <img class="card-img clsImg"
+                                             src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg"
+                                        >
+                                    </div>
+                                    <div class="card-body row">
+                                        <div class="col-sm-12 col-md-9">
+                                            <h5 class="card-title">Building Name</h5>
+                                            <p class="card-text">Date and Time:</p>
+                                            <p class="card-text">Tenant Name:</p>
+                                            <p class="card-text">Tenant Phone:</p>
+                                            <p class="card-text">Status:</p>
+                                        </div>
+                                        <div class="col-md-3 mt-3 col-sm-12">
+                                            <a onclick="confirmCancel(50)" class="mt-1 btn btn-danger">Cancel1</a>
+                                            <a href="#" class="mt-1 btn btn-primary">Check House</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--approve/cancel card end -->
+                            <!--content end-->
+                        </div>
+
+
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                             aria-labelledby="nav-profile-tab">
+                            <!--content-->
+                            <!--waiting card -->
+                            <div class="card mb-4" style="width:100%;">
+                                <div class="row no-gutters">
+                                    <div class="col-sm-5">
+                                        <img class="card-img clsImg"
+                                             src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg"
+                                        >
+                                    </div>
+                                    <div class="card-body row">
+                                        <div class="col-sm-12 col-md-9">
+                                            <h5 class="card-title">Building Name</h5>
+                                            <p class="card-text">Date and Time:</p>
+                                            <p class="card-text">Tenant Name:</p>
+                                            <p class="card-text">Tenant Phone:</p>
+                                            <p class="card-text">Status:</p>
+                                        </div>
+                                        <div class="col-md-3 mt-3 col-sm-12">
+                                            <a href="#" class="mt-1 btn btn-danger">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--waiting card end -->
+
+                            <!--content end-->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--body end-->
+        <!--footer-->
+        <div class="footerpage"></div>
+        <!--footer over-->
+        <script>
+
+            $(function () {
+                $(".headerpage").load("header.html");
+                $(".footerpage").load("footer.html");
+            });
+            $.when(
+                // $.get("findUserAppointment", {}, function (data) {
+                //     console.log(data);
+                //     var allHouse = "";
+                //     if (data.length > 0) {
+                //
+                //         for (var i = 0; i < data.length; i++) {
+                //
+                //             var imgUrl = data[i].mainImageUrl;
+                //             console.log(imgUrl);
+                //             if (imgUrl === "no") {
+                //                 imgUrl = "image/no.jpg";
+                //             }
+                //             var houseCard = "<div class=\"card mb-4\" style=\"width:100%;\">\n" +
+                //                 "                        <div class=\"row no-gutters\">\n" +
+                //                 "                            <div class=\"col-sm-5\">\n" +
+                //                 "                                <img class=\"card-img clsImg\"\n" +
+                //                 "                                     src=\"" + imgUrl + "\"\n" +
+                //                 "                                     >\n" +
+                //                 "                            </div>\n" +
+                //                 "                            <div class=\"col-sm-7\">\n" +
+                //                 "                                <div class=\"card-body\">\n" +
+                //                 "                                    <h5 class=\"card-title\">" + data[i].buildingName + "</h5>\n" +
+                //                 "                                    <p class=\"card-text\">Rental:" + data[i].rental + "</p>\n" +
+                //                 "                                    <p class=\"card-text\">Status:" + data[i].status + "</p>\n" +
+                //                 "                                    <a href=\"/viewMyHouse?id=" + data[i].id + "\" class=\"btn btn-primary\">Edit House</a>\n" +
+                //                 "                                </div>\n" +
+                //                 "                            </div>\n" +
+                //                 "                        </div>\n" +
+                //                 "                    </div>"
+                //             allHouse += houseCard;
+                //         }
+                //     } else {
+                //         allHouse = "                    <div class=\"p-3 col-12 rounded\" style=\"background-color: white\">\n" +
+                //             "                        <h6>Currently do not have any uploaded house</h6>\n" +
+                //             "\n" +
+                //             "                        <a href=\"uploadHouse.html\" class=\"mt-5 btn btn-primary\">Upload House</a>\n" +
+                //             "                    </div>\n"
+                //     }
+                //
+                //     $("#nav-home").html(allHouse);
+                //
+                // }),
+                $.get("findHouseRentedForUser", {}, function (data) {
+                    console.log(data);
+                    var allAppointmentForUser = "";
+                    if (data.length > 0) {
+
+                        for (var i = 0; i < data.length; i++) {
+                            var imgUrl = data[i].mainImageUrl;
+                            console.log(imgUrl);
+                            if (imgUrl === "no") {
+                                imgUrl = "image/no.jpg";
+                            }
+                            // var datetime = data[i].date + " / " + data[i].time;
+                            // console.log("No:" + i + ":" + data[i].status)
+                            // console.log("No:" + i + ":" + data[i].status === 1)
+                            var status = "Waiting"
+                            //status, 1: waiting, 2: renting, 3:decline, 0:cancel, 4: completed
+
+                            if (data[i].status === "1") {
+                                status = "Waiting"
+                            } else if (data[i].status === "2") {
+                                status = "Renting"
+                            } else if (data[i].status === "3") {
+                                status = "Declined"
+                            } else if (data[i].status === "0") {
+                                status = "Cancelled by Owner"
+                            } else if (data[i].status === "4") {
+                                status = "Wait for Deposit"
+                            } else if (data[i].status === "9") {
+                                status = "Cancelled by Tenant"
+                            } else if (data[i].status === "7") {
+                                status = "Deposit to Tenant"
+                            } else if (data[i].status === "8") {
+                                status = "Deposit to Owner"
+                            }
+
+                            var appointmentCard = "<div class=\"card mb-4\" style=\"width:100%;\">\n" +
+                                "                                    <div class=\"row no-gutters\">\n" +
+                                "                                        <div class=\"col-sm-5\">\n" +
+                                "                                            <img class=\"card-img clsImg\"\n" +
+                                "                                                 src=\"" + data[i].image_url + "\"\n" +
+                                "                                            >\n" +
+                                "                                        </div>\n" +
+                                "                                        <div class=\"col-sm-7\">\n" +
+                                "                                            <div class=\"card-body row\">\n" +
+                                "                                                <div class=\"col-sm-12 col-md-9\">\n" +
+                                "                                                    <h5 class=\"card-title\">" + data[i].building_name + "</h5>\n" +
+                                "                                                    <p class=\"card-text\">Start Date: " + data[i].startDate + "</p>\n" +
+                                "                                                    <p class=\"card-text\">End Date: " + data[i].endDate + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Rental: RM" + data[i].rental + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Tenant Phone: " + data[i].tenantPhone + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Tenant Phone: " + data[i].tenantName + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Status: " + status + "</p>\n" +
+                                "                                                </div>\n" +
+                                "                                                <div class=\"col-md-3 mt-3 col-sm-12\">\n"
+
+                            // status: 1:waiting,2:booked,3:decline,0:cancelled
+                            if (data[i].status === "1") {
+                                appointmentCard += "                                            <a href=\"#\" onclick=\"acceptOrder(\'" + data[i].orderId + " \')\" class=\"mt-1 btn btn-success\">Accept</a>\n" +
+
+                                    "                                                    <a href=\"#\" onclick=\"declineOrder(\'" + data[i].orderId + " \')\" class=\"mt-1 btn btn-danger\">Decline</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+
+                            } else if (data[i].status === "2") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderOwner?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                            <a href=\"#\" onclick=\"confirmCancelOwner(\'" + data[i].orderId + " \')\" class=\"mt-1 btn btn-danger\">Cancel</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+
+                            } else if (data[i].status === "3") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+
+                            } else if (data[i].status === "0") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderOwner?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === "4") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderOwner?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+
+                            } else if (data[i].status === "9") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderOwner?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === "7") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderOwner?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === "8") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderOwner?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            }
+
+                            appointmentCard += "                                                <button type=\"button\" style=\"color: white\" class=\"btn btn-info mt-1\"\n" +
+                                "                                                        data-toggle=\"modal\" data-target=\"#modal"+i+"\">\n" +
+                                "                                                    Agreement\n" +
+                                "                                                </button>"
+
+                            appointmentCard += "<!-- Modal -->\n" +
+                                "                                            <div class=\"modal fade\" id=\"modal"+i+"\" tabindex=\"-1\"\n" +
+                                "                                                 aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" +
+                                "                                                <div class=\"modal-dialog modal-lg\">\n" +
+                                "                                                    <div class=\"modal-content\">\n" +
+                                "                                                        <div class=\"modal-header\">\n" +
+                                "                                                            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Agreement</h5>\n" +
+                                "                                                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\"\n" +
+                                "                                                                    aria-label=\"Close\">\n" +
+                                "                                                                <span aria-hidden=\"true\">&times;</span>\n" +
+                                "                                                            </button>\n" +
+                                "                                                        </div>\n" +
+                                "                                                        <div class=\"modal-body\">\n" +
+                                "                                                            <pre>"+data[i].agreement+"</pre>\n" +
+                                "                                                        </div>\n" +
+                                "                                                        <div class=\"modal-footer\">\n" +
+                                "                                                            <button type=\"button\" class=\"btn btn-secondary\"\n" +
+                                "                                                                    data-dismiss=\"modal\">Close\n" +
+                                "                                                            </button>\n" +
+                                "                                                        </div>\n" +
+                                "                                                    </div>\n" +
+                                "                                                </div>\n" +
+                                "                                            </div>\n" +
+                                "                                            <!--modal end-->"
+
+                            appointmentCard += "                                                </div>\n" +
+                                "                                            </div>\n" +
+                                "                                        </div>\n" +
+                                "                                    </div>\n" +
+                                "                                </div>"
+
+                            allAppointmentForUser += appointmentCard;
+                        }
+                    } else {
+                        allAppointmentForUser = "                                <div class=\"p-3 col-12 rounded\" style=\"background-color: white\">\n" +
+                            "                                    <h6>Currently do not have any Order</h6>\n" +
+                            "\n" +
+                            "                                    <a href=\"index.html\" class=\"mt-5 btn btn-primary\">Check Houses</a>\n" +
+                            "                                </div>"
+                    }
+                    $("#nav-home").html(allAppointmentForUser);
+                }),
+
+                // script for user appointment
+                $.get("findUserRentedHouse", {}, function (data) {
+                    console.log(data)
+                    var allAppointmentForUser = "";
+                    if (data.length > 0) {
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            var imgUrl = data[i].mainImageUrl;
+                            console.log(imgUrl);
+                            if (imgUrl === "no") {
+                                imgUrl = "image/no.jpg";
+                            }
+                            // var datetime = data[i].date + " / " + data[i].time;
+                            // console.log("No:" + i + ":" + data[i].status)
+                            // console.log("No:" + i + ":" + data[i].status === 1)
+                            var status = "Waiting"
+                            //status, 1: waiting, 2: renting, 3:decline, 0:cancel by owner, 4: wait deposit, 9 cancelled by tenant, 7: deposit to tenant, 8: deposit to owner
+
+                            if (data[i].status === "1") {
+                                status = "Waiting"
+                            } else if (data[i].status === "2") {
+                                status = "Renting"
+                            } else if (data[i].status === "3") {
+                                status = "Declined"
+                            } else if (data[i].status === "0") {
+                                status = "Cancelled by Owner"
+                            } else if (data[i].status === "4") {
+                                status = "Wait for Deposit"
+                            } else if (data[i].status === "9") {
+                                status = "Cancelled by Tenant"
+                            } else if (data[i].status === "7") {
+                                status = "Deposit to Tenant"
+                            } else if (data[i].status === "8") {
+                                status = "Deposit to Owner"
+                            }
+
+
+                            var appointmentCard = "<div class=\"card mb-4\" style=\"width:100%;\">\n" +
+                                "                                    <div class=\"row no-gutters\">\n" +
+                                "                                        <div class=\"col-sm-5\">\n" +
+                                "                                            <img class=\"card-img clsImg\"\n" +
+                                "                                                 src=\"" + data[i].image_url + "\"\n" +
+                                "                                            >\n" +
+                                "                                        </div>\n" +
+                                "                                        <div class=\"col-sm-7\">\n" +
+                                "                                            <div class=\"card-body row\">\n" +
+                                "                                                <div class=\"col-sm-12 col-md-9\">\n" +
+                                "                                                    <h5 class=\"card-title\">" + data[i].building_name + "</h5>\n" +
+                                "                                                    <p class=\"card-text\">Start Date: " + data[i].startDate + "</p>\n" +
+                                "                                                    <p class=\"card-text\">End Date: " + data[i].endDate + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Rental: RM" + data[i].rental + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Owner Name: " + data[i].ownerName + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Owner Phone: " + data[i].ownerPhone + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Status: " + status + "</p>\n" +
+                                "                                                </div>\n" +
+                                "                                                <div class=\"col-md-3 mt-3 col-sm-12\">\n"
+
+                            // status: 1:waiting,2:booked,3:decline,0:cancelled by owner, 9 cancelled by tenant
+                            if (data[i].status === "1") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+
+                            } else if (data[i].status === "2") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderTenant?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                            <a href=\"#\" onclick=\"confirmCancelTenant(\'" + data[i].orderId + " \')\" class=\"mt-1 btn btn-danger\">Cancel</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+
+                            } else if (data[i].status === "3") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === "0") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderTenant?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === "4") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderTenant?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+
+                            } else if (data[i].status === "9") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderTenant?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === "7") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderTenant?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === "8") {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewOrderTenant?id=" + data[i].orderId + "\" class=\"mt-1 btn btn-primary\">Check Order</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseId + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            }
+
+                            appointmentCard += "                                                <button type=\"button\" style=\"color: white\" class=\"btn btn-info mt-1\"\n" +
+                                "                                                        data-toggle=\"modal\" data-target=\"#modal"+(i+1000000)+"\">\n" +
+                                "                                                    Agreement\n" +
+                                "                                                </button>"
+
+                            appointmentCard += "<!-- Modal -->\n" +
+                                "                                            <div class=\"modal fade\" id=\"modal"+(i+1000000)+"\" tabindex=\"-1\"\n" +
+                                "                                                 aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" +
+                                "                                                <div class=\"modal-dialog modal-lg\">\n" +
+                                "                                                    <div class=\"modal-content\">\n" +
+                                "                                                        <div class=\"modal-header\">\n" +
+                                "                                                            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Agreement</h5>\n" +
+                                "                                                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\"\n" +
+                                "                                                                    aria-label=\"Close\">\n" +
+                                "                                                                <span aria-hidden=\"true\">&times;</span>\n" +
+                                "                                                            </button>\n" +
+                                "                                                        </div>\n" +
+                                "                                                        <div class=\"modal-body\">\n" +
+                                "                                                            <pre>"+data[i].agreement+"</pre>\n" +
+                                "                                                        </div>\n" +
+                                "                                                        <div class=\"modal-footer\">\n" +
+                                "                                                            <button type=\"button\" class=\"btn btn-secondary\"\n" +
+                                "                                                                    data-dismiss=\"modal\">Close\n" +
+                                "                                                            </button>\n" +
+                                "                                                        </div>\n" +
+                                "                                                    </div>\n" +
+                                "                                                </div>\n" +
+                                "                                            </div>\n" +
+                                "                                            <!--modal end-->"
+
+                            appointmentCard += "                                                </div>\n" +
+                                "                                            </div>\n" +
+                                "                                        </div>\n" +
+                                "                                    </div>\n" +
+                                "                                </div>"
+
+                            allAppointmentForUser += appointmentCard;
+                        }
+                    } else {
+                        allAppointmentForUser = "                                <div class=\"p-3 col-12 rounded\" style=\"background-color: white\">\n" +
+                            "                                    <h6>Currently do not have any Order</h6>\n" +
+                            "\n" +
+                            "                                    <a href=\"index.html\" class=\"mt-5 btn btn-primary\">Check Houses</a>\n" +
+                            "                                </div>"
+                    }
+                    $("#nav-profile").html(allAppointmentForUser);
+                })
+            )
+        </script>
+        <script>
+            function confirmCancelOwner(id) {
+                if (confirm("Do you Sure Want to cancel? Please aware that you can lost money if you cancel your rent! You need to pay 3 Months Rental first for security reason!")) {
+                    $.get("cancelOrderOwner?id="+id, {}, function (data) {
+
+                        console.log(data.errorMsg);
+                        if(data.flag){
+                            alert("Order Cancelled")
+                            location.reload();
+                        } else if (data.errorMsg === "1") {
+                            alert("Please Log In!");
+                            location.href = "login.html";
+                        } else if (data.errorMsg === "2") {
+                            alert("Not Enough Money! Please Topup!");
+                            location.href = "/walletPage";
+                        } else {
+                            alert("error")
+                        }
+                    })
+                } else {
+
+                }
+            }
+            function confirmCancelTenant(id) {
+                if (confirm("Please aware that you can lost money if you cancel your rent!")) {
+                    $.get("cancelOrderTenant?id="+id, {}, function (data) {
+                        console.log(data.errorMsg);
+                        if(data.flag){
+                            alert("Order Cancelled")
+                            location.reload();
+                        } else if (data.errorMsg === "1") {
+                            alert("Please Log In!");
+                            location.href = "login.html";
+                        } else {
+                            alert("error")
+                            location.href = "index.html";
+
+                        }
+                    })
+                } else {
+
+                }
+            }
+            function acceptOrder(id) {
+                if (confirm("Do you want to accept order?")) {
+                    $.get("acceptOrder?id="+id, {}, function (data) {
+                        if(data.flag){
+                            alert("Order Accepted")
+                            location.reload();
+                        } else {
+                            alert("Error");
+                        }
+
+                    })
+                } else {
+
+                }
+            }
+
+            function declineOrder(id) {
+                if (confirm("Do you want to decline order?")) {
+                    $.get("declineOrder?id="+id, {}, function (data) {
+                        if(data.flag){
+                            alert("Order Declined!")
+                            location.reload();
+                        } else {
+                            alert("Error");
+                        }
+
+                    })
+                } else {
+
+                }
+            }
+        </script>
+    </body>
+</html>

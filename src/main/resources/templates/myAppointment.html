@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <Title>My Appointment</Title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </head>
+    <style>
+
+        .clsImg {
+            min-height: 250px !important;
+            max-height: 250px !important;
+            min-width: 100% !important;
+            max-width: 100% !important;
+            object-fit: cover;
+        }
+
+    </style>
+    <body>
+
+        <!--header-->
+        <div class="headerpage"></div>
+        <!--header over-->
+        <!--for id purpose-->
+        <!--        <div id="houseID" style="display: none"></div>-->
+        <!--/*@thymesVar id="houseId" type=""*/-->
+        <span th:text="${houseId}" id="houseId" style="display: none"></span>
+        <!--        style="display: none"-->
+
+
+        <!--body-->
+        <div class="container">
+            <h6 class="section-title h1">Appointment List</h6>
+            <div class="row">
+                <div class="col-xs-12 col-12">
+                    <!--nav-->
+                    <nav class="">
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active col-6" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                               role="tab" aria-controls="nav-home" aria-selected="true">House Appointment</a>
+                            <a class="nav-item nav-link col-6" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                               role="tab" aria-controls="nav-profile" aria-selected="false">My Appointment</a>
+                        </div>
+                    </nav>
+                    <!--nav end-->
+
+                    <!--content start here-->
+                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                             aria-labelledby="nav-home-tab">
+                            <!--content-->
+                            <!--no appointment card-->
+                            <div class="p-3 col-12 rounded" style="background-color: white">
+                                <h6>Currently do not have any request</h6>
+
+                                <a href="index.html" class="mt-5 btn btn-primary">Check Houses</a>
+                            </div>
+                            <!--no appointment end-->
+                            <!--waiting card -->
+                            <div class="card mb-4" style="width:100%;">
+                                <div class="row no-gutters">
+                                    <div class="col-sm-5">
+                                        <img class="card-img clsImg"
+                                             src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg"
+                                        >
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="card-body row">
+                                            <div class="col-sm-12 col-md-9">
+                                                <h5 class="card-title">Building Name</h5>
+                                                <p class="card-text">Date and Time:</p>
+                                                <p class="card-text">Tenant Name:</p>
+                                                <p class="card-text">Tenant Phone:</p>
+                                                <p class="card-text">Status:</p>
+                                            </div>
+                                            <div class="col-md-3 mt-3 col-sm-12">
+                                                <a href="#" class="mt-1 btn btn-success">Accept</a>
+                                                <a href="#" class="mt-1 btn btn-danger">Decline</a>
+                                                <a href="#" class="mt-1 btn btn-primary">Check House</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--waiting card end -->
+                            <!--approve/cancel card -->
+                            <div class="card mb-4" style="width:100%;">
+                                <div class="row no-gutters">
+                                    <div class="col-sm-5">
+                                        <img class="card-img clsImg"
+                                             src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg"
+                                        >
+                                    </div>
+                                    <div class="card-body row">
+                                        <div class="col-sm-12 col-md-9">
+                                            <h5 class="card-title">Building Name</h5>
+                                            <p class="card-text">Date and Time:</p>
+                                            <p class="card-text">Tenant Name:</p>
+                                            <p class="card-text">Tenant Phone:</p>
+                                            <p class="card-text">Status:</p>
+                                        </div>
+                                        <div class="col-md-3 mt-3 col-sm-12">
+                                            <a href="#" class="mt-1 btn btn-danger">Cancel</a>
+                                            <a href="#" class="mt-1 btn btn-primary">Check House</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--approve/cancel card end -->
+                            <!--content end-->
+                        </div>
+
+
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                             aria-labelledby="nav-profile-tab">
+                            <!--content-->
+                            <!--waiting card -->
+                            <div class="card mb-4" style="width:100%;">
+                                <div class="row no-gutters">
+                                    <div class="col-sm-5">
+                                        <img class="card-img clsImg"
+                                             src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg"
+                                        >
+                                    </div>
+                                    <div class="card-body row">
+                                        <div class="col-sm-12 col-md-9">
+                                            <h5 class="card-title">Building Name</h5>
+                                            <p class="card-text">Date and Time:</p>
+                                            <p class="card-text">Tenant Name:</p>
+                                            <p class="card-text">Tenant Phone:</p>
+                                            <p class="card-text">Status:</p>
+                                        </div>
+                                        <div class="col-md-3 mt-3 col-sm-12">
+                                            <a href="#" class="mt-1 btn btn-danger">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--waiting card end -->
+
+                            <!--content end-->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--body end-->
+        <!--footer-->
+        <div class="footerpage"></div>
+        <!--footer over-->
+        <script>
+
+            $(function () {
+                $(".headerpage").load("header.html");
+                $(".footerpage").load("footer.html");
+            });
+            $.when(
+                // $.get("findUserAppointment", {}, function (data) {
+                //     console.log(data);
+                //     var allHouse = "";
+                //     if (data.length > 0) {
+                //
+                //         for (var i = 0; i < data.length; i++) {
+                //
+                //             var imgUrl = data[i].mainImageUrl;
+                //             console.log(imgUrl);
+                //             if (imgUrl === "no") {
+                //                 imgUrl = "image/no.jpg";
+                //             }
+                //             var houseCard = "<div class=\"card mb-4\" style=\"width:100%;\">\n" +
+                //                 "                        <div class=\"row no-gutters\">\n" +
+                //                 "                            <div class=\"col-sm-5\">\n" +
+                //                 "                                <img class=\"card-img clsImg\"\n" +
+                //                 "                                     src=\"" + imgUrl + "\"\n" +
+                //                 "                                     >\n" +
+                //                 "                            </div>\n" +
+                //                 "                            <div class=\"col-sm-7\">\n" +
+                //                 "                                <div class=\"card-body\">\n" +
+                //                 "                                    <h5 class=\"card-title\">" + data[i].buildingName + "</h5>\n" +
+                //                 "                                    <p class=\"card-text\">Rental:" + data[i].rental + "</p>\n" +
+                //                 "                                    <p class=\"card-text\">Status:" + data[i].status + "</p>\n" +
+                //                 "                                    <a href=\"/viewMyHouse?id=" + data[i].id + "\" class=\"btn btn-primary\">Edit House</a>\n" +
+                //                 "                                </div>\n" +
+                //                 "                            </div>\n" +
+                //                 "                        </div>\n" +
+                //                 "                    </div>"
+                //             allHouse += houseCard;
+                //         }
+                //     } else {
+                //         allHouse = "                    <div class=\"p-3 col-12 rounded\" style=\"background-color: white\">\n" +
+                //             "                        <h6>Currently do not have any uploaded house</h6>\n" +
+                //             "\n" +
+                //             "                        <a href=\"uploadHouse.html\" class=\"mt-5 btn btn-primary\">Upload House</a>\n" +
+                //             "                    </div>\n"
+                //     }
+                //
+                //     $("#nav-home").html(allHouse);
+                //
+                // }),
+                $.get("findAppointmentForUser", {}, function (data) {
+                    console.log(data);
+                    var allAppointmentForUser = "";
+                    if (data.length > 0) {
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            var imgUrl = data[i].mainImageUrl;
+                            console.log(imgUrl);
+                            if (imgUrl === "no") {
+                                imgUrl = "image/no.jpg";
+                            }
+                            var datetime = data[i].date + " / " + data[i].time;
+                            console.log("No:" + i + ":" + data[i].status)
+                            console.log("No:" + i + ":" + data[i].status === 1)
+                            var status = "Waiting"
+                            // status: 1:waiting,2:booked,3:decline,0:cancelled
+
+                            if (data[i].status === 1) {
+                                status = "Waiting"
+                            } else if (data[i].status === 2) {
+                                status = "Booked"
+                            } else if (data[i].status === 3) {
+                                status = "Decline"
+                            } else if (data[i].status === 0) {
+                                status = "Cancelled"
+                            } else if (data[i].status === 4) {
+                                status = "Expired"
+                            }
+
+                            var appointmentCard = "<div class=\"card mb-4\" style=\"width:100%;\">\n" +
+                                "                                    <div class=\"row no-gutters\">\n" +
+                                "                                        <div class=\"col-sm-5\">\n" +
+                                "                                            <img class=\"card-img clsImg\"\n" +
+                                "                                                 src=\"" + data[i].image_url + "\"\n" +
+                                "                                            >\n" +
+                                "                                        </div>\n" +
+                                "                                        <div class=\"col-sm-7\">\n" +
+                                "                                            <div class=\"card-body row\">\n" +
+                                "                                                <div class=\"col-sm-12 col-md-9\">\n" +
+                                "                                                    <h5 class=\"card-title\">" + data[i].building_name + "</h5>\n" +
+                                "                                                    <p class=\"card-text\">Date and Time: " + datetime + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Tenant Phone: " + data[i].tenant_phone + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Status: " + status + "</p>\n" +
+                                "                                                </div>\n" +
+                                "                                                <div class=\"col-md-3 mt-3 col-sm-12\">\n"
+
+                            // status: 1:waiting,2:booked,3:decline,0:cancelled, 4:expired
+                            if (data[i].status === 1) {
+                                appointmentCard += "                                                    <a href=\"/acceptAppointment?id=" + data[i].appointmentID + "\" class=\"mt-1 btn btn-success\">Accept</a>\n" +
+                                    "                                                    <a href=\"/declineAppointment?id=" + data[i].appointmentID + "\" class=\"mt-1 btn btn-danger\">Decline</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === 2) {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n" +
+                                    "                                                    <a href=\"/cancelAppointment?id=" + data[i].appointmentID + "\" class=\"mt-1 btn btn-danger\">Cancel</a>\n"
+                            } else if (data[i].status === 3) {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === 0) {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === 4) {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            }
+
+                            appointmentCard += "                                                </div>\n" +
+                                "                                            </div>\n" +
+                                "                                        </div>\n" +
+                                "                                    </div>\n" +
+                                "                                </div>"
+
+                            allAppointmentForUser += appointmentCard;
+                        }
+                    } else {
+                        allAppointmentForUser = "                                <div class=\"p-3 col-12 rounded\" style=\"background-color: white\">\n" +
+                            "                                    <h6>Currently do not have any request</h6>\n" +
+                            "\n" +
+                            "                                    <a href=\"index.html\" class=\"mt-5 btn btn-primary\">Check Houses</a>\n" +
+                            "                                </div>"
+                    }
+                    $("#nav-home").html(allAppointmentForUser);
+                }),
+
+                // script for user appointment
+                $.get("findUserAppointment", {}, function (data) {
+                    var allAppointmentForUser = "";
+                    if (data.length > 0) {
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            var imgUrl = data[i].mainImageUrl;
+                            console.log(imgUrl);
+                            if (imgUrl === "no") {
+                                imgUrl = "image/no.jpg";
+                            }
+                            var datetime = data[i].date + " / " + data[i].time;
+                            console.log("No:" + i + ":" + data[i].status)
+                            console.log("No:" + i + ":" + data[i].status === 1)
+                            var status = "Waiting"
+                            // status: 1:waiting,2:booked,3:decline,0:cancelled
+
+                            if (data[i].status === 1) {
+                                status = "Waiting"
+                            } else if (data[i].status === 2) {
+                                status = "Booked"
+                            } else if (data[i].status === 3) {
+                                status = "Decline"
+                            } else if (data[i].status === 0) {
+                                status = "Cancelled"
+                            } else if (data[i].status === 4) {
+                                status = "Expired"
+                            }
+
+                            var appointmentCard = "<div class=\"card mb-4\" style=\"width:100%;\">\n" +
+                                "                                    <div class=\"row no-gutters\">\n" +
+                                "                                        <div class=\"col-sm-5\">\n" +
+                                "                                            <img class=\"card-img clsImg\"\n" +
+                                "                                                 src=\"" + data[i].image_url + "\"\n" +
+                                "                                            >\n" +
+                                "                                        </div>\n" +
+                                "                                        <div class=\"col-sm-7\">\n" +
+                                "                                            <div class=\"card-body row\">\n" +
+                                "                                                <div class=\"col-sm-12 col-md-9\">\n" +
+                                "                                                    <h5 class=\"card-title\">" + data[i].building_name + "</h5>\n" +
+                                "                                                    <p class=\"card-text\">Date and Time: " + datetime + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Tenant Phone: " + data[i].tenant_phone + "</p>\n" +
+                                "                                                    <p class=\"card-text\">Status: " + status + "</p>\n" +
+                                "                                                </div>\n" +
+                                "                                                <div class=\"col-md-3 mt-3 col-sm-12\">\n"
+
+                            // status: 1:waiting,2:booked,3:decline,0:cancelled
+                            if (data[i].status === 1) {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/cancelAppointment?id=" + data[i].appointmentID + "\" class=\"mt-1 btn btn-danger\">Cancel</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+
+                            } else if (data[i].status === 2) {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/cancelAppointment?id=" + data[i].appointmentID + "\" class=\"mt-1 btn btn-danger\">Cancel</a>\n" +
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === 3) {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === 0) {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            } else if (data[i].status === 4) {
+                                appointmentCard +=
+                                    "                                                    <a href=\"/viewDetails?id=" + data[i].houseID + "\" class=\"mt-1 btn btn-primary\">Check House</a>\n"
+                            }
+
+                            appointmentCard += "                                                </div>\n" +
+                                "                                            </div>\n" +
+                                "                                        </div>\n" +
+                                "                                    </div>\n" +
+                                "                                </div>"
+
+                            allAppointmentForUser += appointmentCard;
+                        }
+                    } else {
+                        allAppointmentForUser = "                                <div class=\"p-3 col-12 rounded\" style=\"background-color: white\">\n" +
+                            "                                    <h6>Currently do not have any request</h6>\n" +
+                            "\n" +
+                            "                                    <a href=\"index.html\" class=\"mt-5 btn btn-primary\">Check Houses</a>\n" +
+                            "                                </div>"
+                    }
+                    $("#nav-profile").html(allAppointmentForUser);
+                })
+            )
+        </script>
+    </body>
+</html>

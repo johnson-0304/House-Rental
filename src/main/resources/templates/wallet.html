@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Wallet</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </head>
+    <style>
+        .box-border {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        .scrollClass {
+            height:400px;
+            overflow-y: scroll;
+        }
+
+    </style>
+    <body>
+        <!--header-->
+        <div class="headerpage"></div>
+        <!--header over-->
+
+        <!--body-->
+        <div class="container px-5">
+
+            <div class="row box-border p-3">
+
+                <div class="col-12 row">
+                    <h1 class="mx-auto d-block">My Wallet</h1>
+                </div>
+                <div class="mt-5 col-md-6">
+                    <h4>Current Amount:</h4>
+                    <text style="color: green;font-size: 40px;" id="currentAmount">RM:</text>
+                </div>
+
+                <div class="mt-5 col-md-6">
+                    <form id="topupForm">
+
+                        <input type="hidden" id="Id" name="id" th:value="${userId}">
+
+                        <div class="form-group">
+                            <label>Topup</label>
+                            <input type="number" min="1" max="999999" name="amount" required class="form-control"
+                                   id="topup"
+                                   placeholder="Amount">
+                        </div>
+                        <!--                        <div class="form-group">-->
+                        <!--                            <label>Password</label>-->
+                        <!--                            <input type="password" class="form-control" required id="password" placeholder="Password">-->
+                        <!--                        </div>-->
+                        <button type="submit" class="btn btn-success">Topup</button>
+                    </form>
+
+                </div>
+
+
+                <!--                <div class="col-12">-->
+                <!--                    <h4>Transaction</h4>-->
+                <!--                    <p>Topup RM500</p>-->
+                <!--                    <p>Pay Rental RM500</p>-->
+                <!--                    <p>Receive Rental RM500</p>-->
+                <!--                </div>-->
+            </div>
+            <div class="row box-border p-3 mt-3">
+                <h3 class="mx-auto d-block col-12">Transaction</h3>
+                <div style="overflow:auto" class="scrollClass">
+                    <table class="table" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th data-class="" scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionContent">
+                            <tr>
+                                <th scope="row">2022/Mar/25 18:25:08</th>
+                                <td>Pay RM28500for deposit to cancel order</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2022/Mar/25 18:25:08</th>
+                                <td>Received RM9500 for house rental fromfemale@gmail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <!--body end-->
+        <!--footer-->
+        <div class="footerpage"></div>
+        <!--footer over-->
+
+        <!--script-->
+        <script>
+            $(function () {
+                $(".headerpage").load("header.html");
+                $(".footerpage").load("footer.html");
+            });
+            $.get("getWalletAmount", {}, function (data) {
+
+                if (data != null) {
+                    $("#currentAmount").html("RM: " + data)
+                } else {
+                    alert("Please log in first!");
+                    location.href = "login.html"
+                }
+
+            })
+
+            $.get("getWalletTransaction", {}, function (data) {
+
+                var allTransaction = "";
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    allTransaction += "                        <tr>\n" +
+                        "                            <th scope=\"row\">" + data[i].dateTime + "</th>\n" +
+                        "                            <td>" + data[i].description + "</td>\n" +
+                        "                        </tr>"
+
+                }
+                $("#transactionContent").html(allTransaction);
+
+            })
+
+            $("#topupForm").submit(function (e) {
+                e.preventDefault();
+
+                var confirmMsg = "Are you want to topup RM" + $("#topup").val() + " ?"
+                console.log(confirmMsg);
+                if (confirm(confirmMsg)) {
+                    $.post("topupWallet", $(this).serialize(), function (data) {
+                        //data=response flag:true:register success, false: register fail
+                        console.log(data)
+                        if (data.flag) {
+                            alert("topup completed!");
+                            location.reload();
+                        } else {
+                            alert(data.errorMsg);
+                            location.href = "index.html"
+                        }
+                    })
+                } else {
+                    return;
+                }
+
+            })
+
+        </script>
+    </body>
+</html>

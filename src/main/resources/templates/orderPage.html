@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Order Page</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+
+    </head>
+    <style>
+        .box-border {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .checkbox-lg .custom-control-label::before,
+        .checkbox-lg .custom-control-label::after {
+            top: .8rem;
+            width: 1.55rem;
+            height: 1.55rem;
+        }
+
+        .checkbox-lg .custom-control-label {
+            padding-top: 13px;
+            padding-left: 6px;
+        }
+
+
+        .checkbox-xl .custom-control-label::before,
+        .checkbox-xl .custom-control-label::after {
+            top: 1.2rem;
+            width: 1.85rem;
+            height: 1.85rem;
+        }
+
+        .checkbox-xl .custom-control-label {
+            padding-top: 23px;
+            padding-left: 10px;
+        }
+    </style>
+    <body>
+        <!--header-->
+        <div class="headerpage"></div>
+        <!--header over-->
+
+        <!--body-->
+        <span id="houseId" style="display: none" th:text="${houseId}"></span>
+        <!--        <input type="hidden" name="id" th:value="${houseId}">-->
+        <div class="container p-4">
+            <form id="rental-form">
+                <input type="hidden" name="id" th:value="${houseId}">
+                <div class="row box-border p-3">
+                    <div class="col-md-6 col-12 rounded p-1 order-1 order-md-1">
+                        <div class="col-12"><h2 id="buildingName">1</h2></div>
+                        <div class="col-12 mt-2"><h4>Address:</h4>
+                            <text id="address"> class="font-weight-normal">Lot 1513 Taman xxxxx</text>
+                        </div>
+                        <div class="col-12 mt-2"><h4>Rental:</h4>
+                            <text class="font-weight-normal" id="rental">RM4500</text>
+                        </div>
+                        <div class="col-12 mt-2"><h4>State:</h4>
+                            <text class="font-weight-normal" id="state">Selangor</text>
+                        </div>
+                        <div class="col-12 mt-2"><h4>House Owner Phone:</h4>
+                            <text class="font-weight-normal" id="phone">Selangor</text>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6 col-12 my-1 order-2 order-md-2">
+                        <div class="form-group">
+                            <h4>Duration</h4>
+                            <select class="custom-select mr-sm-2" name="duration" id="type">
+                                <option value="12">1 Year</option>
+                                <option value="24">2 Years</option>
+                                <option value="6">6 Months</option>
+                            </select>
+                        </div>
+
+                        <!--datepicker-->
+                        <h4>Start Date</h4>
+
+                        <input id="datepicker" class="mt-3" name="date" width="276" required/>
+                        <!--                datepicker end-->
+                        <h4 class="mt-3">First Payment</h4>
+                        <div class="border border-primary rounded p-2">
+                            <text class="font-weight-normal">Depoist = Rental x 3 Months</text>
+                            <br>
+                            <text class="font-weight-normal">First Payment = Deposit + First Rental</text>
+                            <!--                            <br>-->
+                            <!--                            <text class="font-weight-normal" id="calculatePayment">RM500 x 3 + RM500 = RM2000</text>-->
+                            <!--                            <br>-->
+                            <br>
+                            <br>
+                            <text class="font-weight-normal">Total(RM) :</text>
+                            <input type="email" readonly name="totalPayment" class="form-control-lg" id="totalPayment">
+                        </div>
+
+                        <button type="submit" disabled class="btn btn-success mt-3" id="payBtn" data-toggle="modal"
+                                data-target="#myModal">
+                            Pay and Rent
+                        </button>
+                        <label>*read the tenancy agreement and tick the checkbox to unlock this button</label>
+                    </div>
+
+                </div>
+                <div class="row box-border p-1 mt-3">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <h4 class="mb-3">Tenancy Agreement</h4>
+                            <textarea class="form-control agreement-textarea" id="agreement"
+                                      name="agreement" rows="30"
+                                      required max="4000" readonly></textarea>
+
+                            <div class="custom-control custom-checkbox checkbox-xl">
+                                <input type="checkbox" class="custom-control-input" id="checkbox-agree">
+                                <label class="custom-control-label" style="color: red" for="checkbox-agree">**The
+                                    tenancy agreement have the force of law. If checked, means you have agreed with the
+                                    tenancy agreement.</label>
+                            </div>
+
+                            <!--                            <button type="submit" disabled class="btn btn-success mt-3" id="payBtn" data-toggle="modal"-->
+                            <!--                                    data-target="#myModal">-->
+                            <!--                                Pay and Rent-->
+                            <!--                            </button>-->
+                            <!--                            <label>*read the tenancy agreement and tick the checkbox to unlock this button</label>-->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <!--body end-->
+        <!--footer-->
+        <div class="footerpage"></div>
+        <!--footer over-->
+
+        <!--script-->
+        <script>
+            $(function () {
+                $(".headerpage").load("header.html");
+                $(".footerpage").load("footer.html");
+            });
+            $('#checkbox-agree').click(function () {
+                console.log("clicked")
+                if ($("#checkbox-agree").is(':checked')) {
+                    $("#payBtn").removeAttr('disabled');
+                } else {
+                    $("#payBtn").attr('disabled', 'disabled');
+                }
+            });
+
+            // datepicker script
+
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+        </script>
+        <script>
+            var tenantname ="";
+            $.get("findUsernameServlet", {}, function (data) {
+                // console.log(data);
+                tenantname = data.username;
+                console.log("in servlet"+tenantname)
+            })
+            var houseId = document.getElementById('houseId').innerHTML;
+            console.log(houseId);
+            $.get("getHouseInfoById?id=" + houseId, {}, function (data) {
+                $("#buildingName").html(data.buildingName);
+                $("#address").html(data.address);
+                $("#rental").html("RM " + data.rental);
+                $("#state").html(data.state);
+                $("#phone").html(data.phone);
+                var tenancyAgreement = "";
+                var buildingName = "Bulding Name: " + data.buildingName + "\n";
+                var rental = "Rental: " + data.rental + "\n";
+                var address = "Address: " + data.address + "\n";
+                var houseType = "House Type: " + data.type + "\n";
+                var bedroom = "Bedroom Amount: " + data.bedroom + "\n";
+                var sqft = "SquareFt: " + data.squareFt + "\n";
+                var furnishing = "Furnishing: " + data.furnish + "\n";
+                var carpark = "Carpark Amount: " + data.carPark + "\n";
+                var owner_name = "House Owner Username: " + data.owner_name + "\n";
+
+                var description = "House Description: \n" + data.description + "\n\n";
+                var agreement = data.agreement + "\n\n";
+
+                console.log("out servlet"+tenantname)
+
+                tenantname = "Tenant Username: " + tenantname + "\n";
+
+                var totalPayment = data.rental * 4;
+                $("#totalPayment").val(totalPayment);
+
+                tenancyAgreement = agreement + "House Information: \n" + buildingName+ "\n" + rental+ "\n" + address+ "\n" + houseType+ "\n" + bedroom+ "\n" + sqft+ "\n" + furnishing+ "\n" + carpark+ "\n" + description+ "\n" + owner_name+ "\n" + tenantname ;
+                $("#agreement").val(tenancyAgreement);
+            })
+        </script>
+        <script>
+            $(function () {
+                $("#rental-form").submit(function (e) {
+                    e.preventDefault();
+                    var confirmMsg = "Are you sure you want to rent this house?"
+                    if (confirm(confirmMsg)) {
+                        $.post("makeOrder", $(this).serialize(), function (data) {
+                            //data=response flag:true:register success, false: register fail
+                            console.log(data)
+                            if (data.flag) {
+                                alert("Request Sent! Please wait house owner to accept!");
+                                location.href = "myOrder.html";
+                            } else {
+                                if (data.errorMsg === "1") {
+                                    alert("Please Login First");
+                                    location.href = "login.html";
+                                } else if (data.errorMsg === "9") {
+                                    alert("Errors! Please try again!")
+                                    location.reload();
+                                } else if (data.errorMsg === "2") {
+                                    alert("Your Balance is Not Enough! Please Topup!");
+                                    location.href = "/walletPage"
+                                } else if (data.errorMsg === "4") {
+                                    alert("You can only select the date after today!");
+                                } else if (data.errorMsg === "3") {
+                                    alert("You can not rent your own house!");
+                                } else if (data.errorMsg === "5") {
+                                    alert("House is not available!");
+                                }
+
+                            }
+                        })
+                    } else {
+                        return;
+                    }
+                })
+            });
+        </script>
+    </body>
+</html>
